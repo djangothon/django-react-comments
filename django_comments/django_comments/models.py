@@ -7,8 +7,3 @@ class Save_comments(models.Model):
 	
 	def __str__(self):
 		return self.title
-
-	class Admin:
-		pass
-
-
