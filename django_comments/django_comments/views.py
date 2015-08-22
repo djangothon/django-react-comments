@@ -2,13 +2,12 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from comment_react.models import Comments
-from django.core import serializers
 
 @csrf_exempt
 def home(request):
 	context_instance=RequestContext(request)
 	if request.method == 'GET':
-		data = serializers.serialize("json", Comments.objects.all())
+		data = Comments.objects.all()
 		return render_to_response('index.html', data)
 	elif request.method == 'POST':
 		data = request.POST.urlencode()
@@ -20,13 +19,14 @@ def home(request):
 			post_id = '1',
 			comment = comment)
 		p1.save()
-		data = serializers.serialize("json", Comments.objects.all())
-		print data
+		data = Comments.objects.all()
 		return render_to_response('index.html', data)
 
 def getComments(request):
-	data = serializers.serialize("json", Comments.objects.all())
+	data = Comments.objects.all()
 	print data
-	n = [e.encode('utf-8') for e in data.strip('[]').split(',')]
-	print n
-	return n
+	# n = [e.encode('utf-8') for e in data.strip('[]').split(',')]
+	# print n[0]
+	return HttpResponse(data, content_type="application/json")
+
+
