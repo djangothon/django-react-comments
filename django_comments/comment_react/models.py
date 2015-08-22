@@ -6,7 +6,7 @@ class Comments(models.Model):
 	comment = models.CharField(max_length=500)
 	
 	def __str__(self):
-		return "user_id: "+self.user_id+"::"+"comment: "+self.comment
+		return "user_id="+self.user_id+","+"comment="+self.comment+","+"post_id="+self.post_id
 
 	def save(self, *args, **kwargs):
 		super(Comments, self).save(*args, **kwargs)

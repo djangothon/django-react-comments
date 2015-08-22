@@ -8,7 +8,15 @@ def home(request):
 	context_instance=RequestContext(request)
 	if request.method == 'GET':
 		data = Comments.objects.all()
-		return render_to_response('index.html', data)
+		comments = []
+		for obj in data:
+			commentCurr = {
+			"user_id": obj.user_id,
+			"comment": obj.comment,
+			"post_id": obj.post_id,
+			}
+			comments.append(commentCurr)
+		return render_to_response('index.html', comments)
 	elif request.method == 'POST':
 		data = request.POST.urlencode()
 		comment = data.split('&')[0].split('=')[1]
@@ -20,13 +28,26 @@ def home(request):
 			comment = comment)
 		p1.save()
 		data = Comments.objects.all()
-		return render_to_response('index.html', data)
+		comments = []
+		for obj in data:
+			commentCurr = {
+			"user_id": obj.user_id,
+			"comment": obj.comment,
+			"post_id": obj.post_id,
+			}
+			comments.append(commentCurr)
+		return render_to_response('index.html', comments)
 
 def getComments(request):
 	data = Comments.objects.all()
-	print data
-	# n = [e.encode('utf-8') for e in data.strip('[]').split(',')]
-	# print n[0]
-	return HttpResponse(data, content_type="application/json")
+	comments = []
+	for obj in data:
+		commentCurr = {
+		"user_id": obj.user_id,
+		"comment": obj.comment,
+		"post_id": obj.post_id,
+		}
+		comments.append(commentCurr)
+	return comments
 
 
