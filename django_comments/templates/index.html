@@ -11,7 +11,7 @@
 		},
 		loadCommentsFromServer: function() {
 			$.ajax({
-				url : '',
+				url : this.props.url,
 				dataType : 'json',
 				success : function(data) {
 					console.log('in - '+ data);
@@ -20,7 +20,7 @@
 				}.bind(this),
 				error : function(xhr, status, err) {
 					console.log('out');
-					console.error(' ', status, err);
+					console.error(this.props.url, status, err);
 				}.bind(this)
 			});
 		},
