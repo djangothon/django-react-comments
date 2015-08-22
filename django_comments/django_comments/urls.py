@@ -1,9 +1,9 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from django_comments.views import home, answer_list
+from django_comments.views import home, getComments
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home),
-    url(r'^answer_list', answer_list),
+    url(r'^get_comments/', getComments),
 ]
