@@ -9,8 +9,5 @@ def home(request):
 	if request.method == 'GET':
 		return render_to_response('index.html')
 	elif request.method == 'POST':
-		print 'out'
+		print request
 		return render_to_response('index.html')
-
-def post():
-	print 'in'
