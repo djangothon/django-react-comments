@@ -9,5 +9,9 @@ def home(request):
 	if request.method == 'GET':
 		return render_to_response('index.html')
 	elif request.method == 'POST':
-		print request.POST
+		data = request.POST.urlencode()
+		comment = data.split('&')[0].split('=')[1]
+		author = data.split('&')[1].split('=')[1]
+		print 'comment - '+ comment
+		print 'author - '+ author
 		return render_to_response('index.html')
