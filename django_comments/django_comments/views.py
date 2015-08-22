@@ -8,6 +8,8 @@ def home(request):
 	context_instance=RequestContext(request)
 	print request
 	if request.method == 'GET':
+		comments_all = Save_comments.objects.all()
+		print comments_all
 		return render_to_response('index.html')
 	elif request.method == 'POST':
 		data = request.POST.urlencode()
