@@ -27,4 +27,6 @@ def home(request):
 def getComments(request):
 	data = serializers.serialize("json", Comments.objects.all())
 	print data
-	return data
+	n = [e.encode('utf-8') for e in data.strip('[]').split(',')]
+	print n
+	return n
