@@ -30,7 +30,7 @@
 				dataType: 'json',
 				data: comment,
 				success: function(data) {
-					console.log(data);
+					console.log('data - '+ data);
 					this.setState({data: data});
 				}.bind(this),
 				error: function(xhr, status, err) {
