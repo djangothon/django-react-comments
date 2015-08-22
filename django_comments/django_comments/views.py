@@ -14,4 +14,5 @@ def home(request):
 		author = data.split('&')[1].split('=')[1]
 		print 'comment - '+ comment
 		print 'author - '+ author
+		# Save author and comment to db
 		return render_to_response('index.html')
