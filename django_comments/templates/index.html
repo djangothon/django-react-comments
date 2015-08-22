@@ -70,7 +70,6 @@
 	});
 	var CommentForm = React.createClass({
 		handleSubmit: function() {
-			var csrftoken = getCookie('csrftoken');
 			var author = this.refs.author.getDOMNode().value.trim();
 			var text = this.refs.text.getDOMNode().value.trim();
 			this.props.onCommentSubmit({author: author, text: text});
@@ -84,7 +83,6 @@
 		render: function() {
 			return (
 				<form className="commentForm" onSubmit={this.handleSubmit}>
-					<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
 					<input hidden type="text" placeholder="Your name" ref="author" value="Author" />
 					<br />
 					<input type="text" id="textName" placeholder="Say something..." ref="text" />
@@ -112,24 +110,6 @@
 		<CommentBox url="" pollInterval={2000} />,
 		document.getElementById('content')
 	);
-</script>
-<script type="text/javascript">
-	// using jQuery
-	function getCookie(name) {
-		var cookieValue = null;
-		if (document.cookie && document.cookie != '') {
-			var cookies = document.cookie.split(';');
-			for (var i = 0; i < cookies.length; i++) {
-				var cookie = jQuery.trim(cookies[i]);
-				// Does this cookie string begin with the name we want?
-				if (cookie.substring(0, name.length + 1) == (name + '=')) {
-					cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-					break;
-				}
-			}
-		}
-		return cookieValue;
-	}
 </script>
 <script src="http://fb.me/react-0.11.1.js"></script>
 <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
