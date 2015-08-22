@@ -25,7 +25,7 @@
 			var newComments = comments.concat([comment]);
 			this.setState({data: newComments});
 			$.ajax({
-				url: ' ',
+				url: '',
 				dataType: 'json',
 				type: 'POST',
 				data: comment,
@@ -82,7 +82,7 @@
 		render: function() {
 			return (
 				<form className="commentForm" onSubmit={this.handleSubmit}>
-					<input type="text" placeholder="Your name" ref="author" />
+					<input hidden type="text" placeholder="Your name" ref="author" value="Author" />
 					<br />
 					<input type="text" id="textName" placeholder="Say something..." ref="text" />
 					<input type="submit" id="submitButton" value="Post" />
@@ -106,7 +106,7 @@
 		}
 	});
 	React.renderComponent(
-		<CommentBox url=" " pollInterval={2000} />,
+		<CommentBox url="" pollInterval={2000} />,
 		document.getElementById('content')
 	);
 </script>
