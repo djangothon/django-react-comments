@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
 <div id="content"></div>
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 <script type="text/jsx">
 	/** @jsx React.DOM */
 	var CommentBox = React.createClass({
@@ -15,10 +16,11 @@
 				success : function(data) {
 					console.log('in - '+ data);
 					this.setState({data: data});
+					console.log('data - '+ data);
 				}.bind(this),
 				error : function(xhr, status, err) {
 					console.log('out');
-					console.error('', status, err.toString());
+					console.error(' ', status, err);
 				}.bind(this)
 			});
 		},
@@ -114,5 +116,4 @@
 </script>
 <script src="http://fb.me/react-0.11.1.js"></script>
 <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
-<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>

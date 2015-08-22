@@ -48,6 +48,7 @@ def getComments(request):
 		"post_id": obj.post_id,
 		}
 		comments.append(commentCurr)
-	return comments
+	print comments
+	return render_to_response('index.html',comments)
 
 
