@@ -48,8 +48,8 @@ def getComments(request):
 	comments = []
 	for obj in data:
 		commentCurr = {
-		"user_id": obj.user_id,
-		"comment": obj.comment,
+		"author": obj.user_id,
+		"text": obj.comment,
 		"post_id": obj.post_id,
 		}
 		comments.append(commentCurr)
