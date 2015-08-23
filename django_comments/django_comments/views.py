@@ -13,8 +13,8 @@ def home(request):
 		comments = []
 		for obj in data:
 			commentCurr = {
-			"user_id": obj.user_id,
-			"comment": obj.comment,
+			"author": obj.user_id,
+			"text": obj.comment,
 			"post_id": obj.post_id,
 			}
 			comments.append(commentCurr)
@@ -24,8 +24,6 @@ def home(request):
 		data = request.POST.urlencode()
 		comment = data.split('&')[0].split('=')[1]
 		author = data.split('&')[1].split('=')[1]
-		print 'comment - '+ comment
-		print 'author - '+ author
 		p1 = Comments(user_id=author,
 			post_id = '1',
 			comment = comment)
@@ -34,8 +32,8 @@ def home(request):
 		comments = []
 		for obj in data:
 			commentCurr = {
-			"user_id": obj.user_id,
-			"comment": obj.comment,
+			"author": obj.user_id,
+			"text": obj.comment,
 			"post_id": obj.post_id,
 			}
 			comments.append(commentCurr)
@@ -47,11 +45,9 @@ def getComments(request):
 	data = Comments.objects.all()
 	comments = []
 	for obj in data:
-		obj_comment = obj.comment
-		obj_comment_refined = obj_comment.replace ("+", " ");
 		commentCurr = {
 		"author": obj.user_id,
-		"text": obj_comment_refined,
+		"text": obj.comment.replace('+',' '),
 		"post_id": obj.post_id,
 		}
 		comments.append(commentCurr)
