@@ -1,6 +1,6 @@
 """
 See:
-https://github.com/anistark/django-react-comments/tree/puja
+https://github.com/djangothon/django-react-comments
 """
 
 from setuptools import setup, find_packages
@@ -12,20 +12,20 @@ here = path.abspath(path.dirname(__file__))
 setup(
     name='django-react-comments',
 
-    version='0.0.1',
+    version='0.0.2',
 
-    description='a django project with the comment system implemented in reactJS',
-    long_description=long_description,
+    description='Django comment module using in reactJS',
+    long_description='Django comment module using in reactJS. Currently only stores to db and uses a dummy user and post.',
 
-    url='https://github.com/anistark/django-react-comments/tree/puja',
+    url='https://github.com/djangothon/django-react-comments',
 
-    author=' ',
-    author_email=' ',
+    authors=['Kumar Anirudha', 'Puja Singh'],
+    author_email=['anirudhastark@yahoo.com','singhpuja0708@gmail.com'],
 
     license='MIT',
 
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 1 - Alpha',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
@@ -37,7 +37,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
 
-    keywords='django commenting system in reactJS',
+    keywords='django,comment,module,djangothon,anistark,puja0708,reactJS',
 
     
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
