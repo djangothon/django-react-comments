@@ -12,7 +12,7 @@ here = path.abspath(path.dirname(__file__))
 setup(
     name='django-react-comments',
 
-    version='0.0.3',
+    version='0.0.4',
 
     description='Django comment module using in reactJS',
     long_description='Django comment module using in reactJS. Currently only stores to db and uses a dummy user and post.',
@@ -26,7 +26,7 @@ setup(
 
     classifiers=[
         'Framework :: Django',
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Alpha',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2',

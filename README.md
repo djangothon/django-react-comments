@@ -1,5 +1,6 @@
 # Django Comments Module
 
+v0.0.4
 To run:
 
 ```
