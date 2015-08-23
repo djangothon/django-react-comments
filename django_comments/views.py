@@ -47,9 +47,11 @@ def getComments(request):
 	data = Comments.objects.all()
 	comments = []
 	for obj in data:
+		obj_comment = obj.comment
+		obj_comment_refined = obj_comment.replace ("+", " ");
 		commentCurr = {
 		"author": obj.user_id,
-		"text": obj.comment,
+		"text": obj_comment_refined,
 		"post_id": obj.post_id,
 		}
 		comments.append(commentCurr)
