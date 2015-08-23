@@ -1,12 +1,24 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
 <div id="content"></div>
 <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 <script type="text/jsx">
 	/** @jsx React.DOM */
 	var CommentBox = React.createClass({
 		getInitialState: function() {
+			// $.ajax({
+			// 	url : "getcomments/",
+			// 	type : "POST",
+			// 	success : function(data) {
+			// 		console.log('success - '+ JSON.stringify(data));
+			// 		return data;
+			// 	},
+			// 	error : function(xhr,errmsg,err) {
+			// 		console.log('err');
+			// 		console.log(xhr.status + ": " + xhr.responseText);
+			// 		return {data: []};
+			// 	}
+			// });
 			return {data: []};
 		},
 		loadCommentsFromServer: function() {
@@ -16,7 +28,6 @@
 				success : function(data) {
 					console.log('in - '+ data);
 					this.setState({data: data});
-					console.log('data - '+ data);
 				}.bind(this),
 				error : function(xhr, status, err) {
 					console.log('out');
@@ -110,7 +121,7 @@
 		}
 	});
 	React.renderComponent(
-		<CommentBox url="" pollInterval={2000} />,
+		<CommentBox url="getcomments/" pollInterval={2000} />,
 		document.getElementById('content')
 	);
 </script>

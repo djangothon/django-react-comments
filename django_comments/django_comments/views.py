@@ -2,6 +2,8 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from comment_react.models import Comments
+from django.http import HttpResponse
+import json
 
 @csrf_exempt
 def home(request):
@@ -16,6 +18,7 @@ def home(request):
 			"post_id": obj.post_id,
 			}
 			comments.append(commentCurr)
+		comments.append({ 'status_code' : 'success' })
 		return render_to_response('index.html', comments)
 	elif request.method == 'POST':
 		data = request.POST.urlencode()
@@ -36,8 +39,10 @@ def home(request):
 			"post_id": obj.post_id,
 			}
 			comments.append(commentCurr)
+		comments.append({ 'status_code' : 'success' })
 		return render_to_response('index.html', comments)
 
+@csrf_exempt
 def getComments(request):
 	data = Comments.objects.all()
 	comments = []
@@ -48,7 +53,7 @@ def getComments(request):
 		"post_id": obj.post_id,
 		}
 		comments.append(commentCurr)
-	print comments
-	return render_to_response('index.html',comments)
+	comments.append({ 'status_code' : 'success' })
+	return HttpResponse(json.dumps(comments), content_type = "application/json")
 
 
