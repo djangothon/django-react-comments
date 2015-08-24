@@ -9,17 +9,7 @@ import json
 def home(request):
 	context_instance=RequestContext(request)
 	if request.method == 'GET':
-		data = Comments.objects.all()
-		comments = []
-		for obj in data:
-			commentCurr = {
-			"author": obj.user_id,
-			"text": obj.comment,
-			"post_id": obj.post_id,
-			}
-			comments.append(commentCurr)
-		comments.append({ 'status_code' : 'success' })
-		return render_to_response('index.html', comments)
+		return render_to_response('index.html')
 	elif request.method == 'POST':
 		data = request.POST.urlencode()
 		comment = data.split('&')[0].split('=')[1]
@@ -28,17 +18,7 @@ def home(request):
 			post_id = '1',
 			comment = comment)
 		p1.save()
-		data = Comments.objects.all()
-		comments = []
-		for obj in data:
-			commentCurr = {
-			"author": obj.user_id,
-			"text": obj.comment,
-			"post_id": obj.post_id,
-			}
-			comments.append(commentCurr)
-		comments.append({ 'status_code' : 'success' })
-		return render_to_response('index.html', comments)
+		return render_to_response('index.html')
 
 @csrf_exempt
 def getComments(request):
